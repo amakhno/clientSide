@@ -1,0 +1,34 @@
+<style>
+    input.ng-touched.ng-invalid {
+        border: 2px solid rgb(233, 66, 0);
+    }
+    input.ng-touched.ng-valid {
+        border: 2px solid rgb(113, 233, 0);
+    }
+
+    .wrong .input{
+        border: 2px solid rgb(233, 66, 0);
+    }
+
+</style>
+<div *ngIf="isLogin()" class="header clearfix p-2">
+    <button class="btn btn-secondary float-right" (click)="logOut()">Выйти</button>
+    <h5>Приветствую, {{(getName())}}</h5>
+</div>
+<div *ngIf="!isLogin()" class="p-2">
+    <h5>Login Form</h5>
+
+    <form #loginForm="ngForm" [class.wrong]='formChanged' novalidate class="form-control" (ngSubmit)="submit(loginForm)">
+        <div class="form-group">
+            <label class="form-control-label">Login</label>
+            <input type="text" class="form-control" [(ngModel)]="login" name="login" required>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Password</label>
+            <input type="text" class="form-control" [(ngModel)]="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Text</button>
+        </div>
+    </form>
+</div>

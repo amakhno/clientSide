@@ -1,0 +1,52 @@
+<div *ngIf='checkLogin()'>
+    <div class="p-2 pt-4">
+        <h4>Переговорные</h4>
+    </div>
+    <table class="table table-striped">
+        <tbody>
+            <tr id="head">
+                <th>
+                    Название переговорной
+                </th>
+                <th>
+                    Количество сидячих мест
+                </th>
+                <th>
+                    Есть проектор?
+                </th>
+                <th>
+                    Есть доска?
+                </th>
+                <th>
+                    Ближайшая встреча
+                </th>
+                <th>
+                    Бронировать
+                </th>
+            </tr>
+            <tr *ngFor='let item of positions'>
+                <td>
+                    {{item.Name}}
+                </td>
+                <td>
+                    {{item.CountOfChairs}}
+                </td>
+                <td>
+                    <input type="checkbox" disabled [ngModel]="item.Isboard">
+                </td>
+                <td>
+                    <input type="checkbox" disabled [ngModel]="item.IsProjector">
+                </td>
+                <td>
+                    Нет встреч
+                </td>
+                <td>
+                    <button class="btn btn-secondary">Booking</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="p-2">
+        <button class="btn btn-primary" (click)="getData()">Показать переговорные</button>
+    </div>
+</div>
